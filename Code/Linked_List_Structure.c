@@ -117,22 +117,29 @@ int seachLinkList(Node *LinkList, int e) {
 int main() {
     Node *LinkList = initLink();
     int arr[MaxSize], length, index;
+
     for (int i = 0; i < MaxSize; i++)
         scanf("%d", &arr[i]);
+
     creatNode(LinkList, sizeof(arr) / sizeof(int), arr);
     length = getLength(LinkList);
     printf("%d ", length);
+
     insertLinkList(LinkList, 10, 11);
     length = getLength(LinkList);
     printf("%d ", length);
+
     deleteLinkList(LinkList, 1);
     deleteLinkList(LinkList, 10);
     length = getLength(LinkList);
     printf("%d ", length);
+
     index = seachLinkList(LinkList, 40);
     printf("%d ", index);
+
     index = seachLinkList(LinkList, 100);
     printf("%d ", index);
+    
     free(LinkList);
     return 0;
 }
