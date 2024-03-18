@@ -29,9 +29,15 @@ Node* insertBinaryTree(Node* root, int e)
 		return root;
 	}
 	if (root->data > e)
+	{
 		root->left = insertBinaryTree(root->left, e);
+		root->left->up = root;
+	}
 	else
+	{
 		root->right = insertBinaryTree(root->right, e);
+		root->right->up = root;
+	}
 	return root;
 }
 
