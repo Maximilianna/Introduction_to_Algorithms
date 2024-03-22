@@ -20,13 +20,13 @@ typedef struct HashTable
 	unsigned int size;
 }HashTable;
 
-//³õÊ¼»¯¹şÏ£±í
+//åˆå§‹åŒ–å“ˆå¸Œè¡¨
 void init_HashTable(HashTable* H, int size)
 {
 	H->arr = (Node*)malloc(sizeof(Node) * size);
 	if (H->arr == NULL)
 	{
-		printf("¹şÏ£±íÊı×é·ÖÅä¿Õ¼äÊ§°Ü!\n");
+		printf("å“ˆå¸Œè¡¨æ•°ç»„åˆ†é…ç©ºé—´å¤±è´¥!\n");
 		exit(0);
 	}
 	for (int i = 0; i < size; i++)
@@ -34,13 +34,13 @@ void init_HashTable(HashTable* H, int size)
 	H->size = size;
 }
 
-//¹şÏ£º¯Êı
+//å“ˆå¸Œå‡½æ•°
 int hash(HashTable* H, int key)
 {
 	return (int)pow(key, 2) * Rand % H->size;
 }
 
-//²åÈë¹şÏ£±í
+//æ’å…¥å“ˆå¸Œè¡¨
 void insert_HashTable(HashTable* H, int key)
 {
 	int Hash = hash(H, key);
@@ -61,7 +61,7 @@ void insert_HashTable(HashTable* H, int key)
 	tmp->next = newNode;
 }
 
-//É¾³ı¹şÏ£±í
+//åˆ é™¤å“ˆå¸Œè¡¨
 void delete_HashTable(HashTable* H, int key)
 {
 	int Hash = hash(H, key);
@@ -78,7 +78,7 @@ void delete_HashTable(HashTable* H, int key)
 	tmp->next = NULL;
 }
 
-//´òÓ¡¹şÏ£±í
+//æ‰“å°å“ˆå¸Œè¡¨
 void print_HashTable(HashTable* H)
 {
 	for (int i = 0; i < H->size; i++)
@@ -107,40 +107,40 @@ int main()
 	init_HashTable(&H,MAX_HASHTABLE);
 	while (1)
 	{
-		printf("²åÈëÊı¾İ(1):\n");
-		printf("É¾³ıÊı¾İ(2):\n");
-		printf("´òÓ¡Êı¾İ(3):\n");
-		printf("ÍË³ö(4):\n");
+		printf("æ’å…¥æ•°æ®(1):\n");
+		printf("åˆ é™¤æ•°æ®(2):\n");
+		printf("æ‰“å°æ•°æ®(3):\n");
+		printf("é€€å‡º(4):\n");
 		scanf("%d", &x);
 		switch (x)
 		{
 		case 1:
-			printf("ÇëÊäÈëÒª²åÈëÉ¢ÁĞ±íµÄÊı¾İ£º");
+			printf("è¯·è¾“å…¥è¦æ’å…¥æ•£åˆ—è¡¨çš„æ•°æ®ï¼š");
 			scanf("%d", &e);
 			insert_HashTable(&H, e);
 			system("pause");
 			system("cls");
 			break;
 		case 2:
-			printf("ÇëÊäÈëÒªÉ¾³ıµÄÊı¾İ£º");
+			printf("è¯·è¾“å…¥è¦åˆ é™¤çš„æ•°æ®ï¼š");
 			scanf("%d", &e);
 			delete_HashTable(&H, e);
 			system("pause");
 			system("cls");
 			break;
 		case 3:
-			printf("É¢ÁĞ±íÊı¾İÈçÏÂ£º\n");
+			printf("æ•£åˆ—è¡¨æ•°æ®å¦‚ä¸‹ï¼š\n");
 			print_HashTable(&H);
 			system("pause");
 			system("cls");
 			break;
 		case 4:
-			printf("ÒÑÍË³ö");
+			printf("å·²é€€å‡º");
 			system("pause");
 			exit(0);
 			break;
 		default:
-			printf("ÊäÈë´íÎó£¬ÇëÖØĞÂÊäÈë");
+			printf("è¾“å…¥é”™è¯¯ï¼Œè¯·é‡æ–°è¾“å…¥");
 			system("pause");
 			system("cls");
 			break;
